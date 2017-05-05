@@ -126,6 +126,11 @@ $(function () {
 		triggerElement: "#header",
 		duration: '100%'
 	})
+	.on("enter", function (e) {
+		$(".portfolioBg").css("display", "none");
+		$(".contactBg").css("display", "none");
+		$(".headerBg").css("display", "block");		
+	})
 	.setTween(".headerBg", {y: "-20%", ease: Linear.easeNone})
 	.addTo(controller);
 
@@ -133,30 +138,16 @@ $(function () {
 	//////////////////
 	//	Portfolio 	//
 	//////////////////
-	var portfolioScene = new ScrollMagic.Scene({
-		triggerElement: "#portfolio",
-		triggerHook: 'onEnter'
-	})
-	.on("enter leave", function (e) {
-		$direction = e.target.controller().info("scrollDirection");
-
-		if($direction == "FORWARD"){
-			$(".portfolioBg").css("z-index","-1");
-			$("#preContact").css("z-index","-2");
-			$(".headerBg").css("z-index","-2");		
-		}
-		else{
-			$(".portfolioBg").css("z-index","-2");
-			$("#preContact").css("z-index","-2");
-			$(".headerBg").css("z-index","-1");	
-		}
-	})
-	.addTo(controller);
 
 	var scene1 = new ScrollMagic.Scene({
 		triggerElement: "#portfolio",
 		triggerHook: 'onEnter',
 		duration: '200%'
+	})
+	.on("enter", function (e) {
+		$(".portfolioBg").css("display", "block");
+		$(".contactBg").css("display", "none");
+		$(".headerBg").css("display", "none");		
 	})
 	.setTween(".portfolioBg", {y: "-20%", ease: Linear.easeNone})
 	.addTo(controller);
@@ -169,9 +160,25 @@ $(function () {
 
 	var contactScene = new ScrollMagic.Scene({
 		triggerElement: "#contact",
+		triggerHook: 'onEnter',
 		duration: '100%'
 	})
 	.setTween(".contactBg", {y: "-20%", ease: Linear.easeNone})
+	.on("enter", function (e) {
+		$(".portfolioBg").css("display", "none");
+		$(".contactBg").css("display", "block");
+		$(".headerBg").css("display", "none");		
+	})
+	.on("leave", function (e) {
+
+		$direction = e.target.controller().info("scrollDirection");
+
+		if($direction == "REVERSE"){			
+			$(".portfolioBg").css("display", "block");
+			$(".contactBg").css("display", "none");
+			$(".headerBg").css("display", "none");	
+		}	
+	})
 	.addTo(controller);
 
 

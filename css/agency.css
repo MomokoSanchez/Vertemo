@@ -264,7 +264,6 @@ fieldset[disabled] .btn-xl.active {
   -o-background-size: cover;  
   position: fixed;
   min-width: 100%;
-  height: 110vh;
   top:0;
   left:0;
 }
@@ -272,11 +271,13 @@ fieldset[disabled] .btn-xl.active {
 .headerBg{
   background-image: url('../img/header-bg2.jpg');
   z-index: -1;
+  height: 110vh;
 }
 
 .contactBg{
   background-image: url('../img/map-image-bg.png');
   z-index: -3;
+  height: 130vh;
 }
 
 #header {
