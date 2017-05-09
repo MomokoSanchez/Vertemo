@@ -220,7 +220,7 @@ fieldset[disabled] .btn-xl.active {
 }
 @media (min-width: 768px) {
   .navbar-custom {
-    background-color: rgba(165, 163, 163, 0.6);
+    background-color: rgba(39, 39, 39, 0.6);
     padding: 25px 0;
     -webkit-transition: padding 0.3s;
     -moz-transition: padding 0.3s;
@@ -269,13 +269,13 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .headerBg{
-  background-image: url('../img/header-bg2.jpg');
+  background-image: url('../img/header-bg3.jpg');
   z-index: -1;
   height: 110vh;
 }
 
 .contactBg{
-  background-image: url('../img/map-image-bg.png');
+  background-image: url('../img/map-image-blue.jpg');
   z-index: -3;
   height: 130vh;
 }
@@ -300,6 +300,9 @@ fieldset[disabled] .btn-xl.active {
   font-size: 22px;
   line-height: 22px;
   margin-bottom: 25px;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #cacaca;
 }
 
 #header .intro-text .intro-logo{
@@ -367,7 +370,7 @@ section h3.section-subheading {
   text-transform: none;
 }
 .portfolioBg{
-  background-image: url('../img/grandma23.jpg');
+  background-image: url('../img/grandma24.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
