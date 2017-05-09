@@ -30,4 +30,17 @@
         }
     })
 
+    // Animate Icons
+    $('#services .fa-shopping-cart').hover(function(){
+        $(this).toggleClass('animated zoomOutRight');
+    });
+
+    $('#services .fa-laptop').hover(function(){
+        $(this).toggleClass('animated rubberBand');
+    });
+
+    $('#services .fa-lock').hover(function(){
+        $(this).toggleClass('animated shake');
+    });
+
 })(jQuery); // End of use strict

@@ -17,6 +17,9 @@ body {
 .text-light {
   color: white;
 }
+.text-blue{
+  color: #122865;
+}
 .text-primary {
   color: #50bf00;
 }
@@ -350,7 +353,7 @@ section h2.section-heading {
   font-size: 40px;
   margin-top: 0;
   margin-bottom: 15px;
-  color: #464646;
+  color: #122865;
 }
 section h3.section-subheading {
   font-size: 16px;
@@ -379,7 +382,7 @@ section h3.section-subheading {
   background-size: cover;
   -o-background-size: cover;  position: fixed;
   min-width: 100%;
-  height: 130vh;
+  height: 120vh;
   top:10vh;
   left:0;
   z-index: -2;
@@ -501,11 +504,15 @@ section h3.section-subheading {
     position: absolute;
     left: 0;
     /*box-shadow: -1px 1px 5px 1px #d8d8d8;*/
-    border: thin solid #d6d5d5;
+    border: thin solid #0d488d;
+}
+
+#services .fa-stack{
+  overflow: hidden;
 }
 
 #services .fa-stack i{
-    text-shadow: -3px 3px 8px #adadad;
+    color: #0d488d;
 }
 
 .timeline {
@@ -518,8 +525,8 @@ section h3.section-subheading {
   bottom: 0;
   position: absolute;
   content: "";
-  width: 2px;
-  background-color: #f1f1f1;
+  width: 1px;
+  background-color: #0d488d;
   left: 40px;
   margin-left: -1.5px;
 }
@@ -563,16 +570,16 @@ section h3.section-subheading {
   position: absolute;
   z-index: 100;
   background: rgb(239, 239, 239);
-  box-shadow: -1px 1px 5px 1px #d8d8d8;
   color: white;
   border-radius: 100%;
   text-align: center;
+  border: thin solid #0d488d;
 }
 .timeline > li .timeline-image h4 {
   font-size: 10px;
   margin-top: 12px;
   line-height: 14px;
-  color: #505050;
+  color: #122865;
 }
 .timeline > li.timeline-inverted > .timeline-panel {
   float: right;
@@ -692,7 +699,7 @@ section h3.section-subheading {
   }
   .timeline > li .timeline-image h4 {
     font-size: 18px;
-    margin-top: 30px;
+    margin-top: 37px;
     line-height: 26px;
   }
   .timeline > li.timeline-inverted > .timeline-panel {
@@ -724,7 +731,7 @@ section h3.section-subheading {
 }
 .team-member img {
   margin: 0 auto;
-  border: 7px solid white;
+  border: thin solid #0d488d;
 }
 .team-member h4 {
   margin-top: 25px;

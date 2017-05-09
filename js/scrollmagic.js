@@ -124,7 +124,8 @@ $(function () {
 
 	var sceneA = new ScrollMagic.Scene({
 		triggerElement: "#header",
-		duration: '100%'
+		offset: '-10%',
+		duration: '110%'
 	})
 	.on("enter", function (e) {
 		$(".portfolioBg").css("display", "none");
@@ -132,6 +133,7 @@ $(function () {
 		$(".headerBg").css("display", "block");		
 	})
 	.setTween(".headerBg", {y: "-20%", ease: Linear.easeNone})
+	.addIndicators()
 	.addTo(controller);
 
 
@@ -142,6 +144,7 @@ $(function () {
 	var scene1 = new ScrollMagic.Scene({
 		triggerElement: "#portfolio",
 		triggerHook: 'onEnter',
+		offset: '-10%',
 		duration: '200%'
 	})
 	.on("enter", function (e) {
@@ -149,7 +152,18 @@ $(function () {
 		$(".contactBg").css("display", "none");
 		$(".headerBg").css("display", "none");		
 	})
+	.on("leave", function (e) {
+
+		$direction = e.target.controller().info("scrollDirection");
+
+		if($direction == "REVERSE"){			
+			$(".portfolioBg").css("display", "none");
+			$(".contactBg").css("display", "none");
+			$(".headerBg").css("display", "block");	
+		}	
+	})
 	.setTween(".portfolioBg", {y: "-20%", ease: Linear.easeNone})
+	.addIndicators()
 	.addTo(controller);
 
 });
@@ -161,7 +175,8 @@ $(function () {
 	var contactScene = new ScrollMagic.Scene({
 		triggerElement: "#contact",
 		triggerHook: 'onEnter',
-		duration: '100%'
+		offset: '-10%',
+		duration: '110%'
 	})
 	.setTween(".contactBg", {y: "-20%", ease: Linear.easeNone})
 	.on("enter", function (e) {
