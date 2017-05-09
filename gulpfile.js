@@ -17,6 +17,7 @@ var banner = ['/*!\n',
     ''
 ].join('');
 
+/*
 // Compile LESS files from /less into /css
 gulp.task('less', function() {
     return gulp.src('less/agency.less')
@@ -27,6 +28,7 @@ gulp.task('less', function() {
             stream: true
         }))
 });
+*/
 
 // Minify compiled CSS
 gulp.task('minify-css', ['less'], function() {
