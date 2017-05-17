@@ -30,6 +30,17 @@ gulp.task('less', function() {
 });
 */
 
+// Compiles SCSS files from /scss into /css
+gulp.task('sass', function() {
+    return gulp.src('src/scss/agency.scss')
+        .pipe(sass())
+        .pipe(header(banner, { pkg: pkg }))
+        .pipe(gulp.dest('src/css'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
+});
+
 // Minify compiled CSS
 //gulp.task('minify-css', ['less'], function() {
 gulp.task('minify-css', function() {
@@ -75,7 +86,7 @@ gulp.task('copy', function() {
 
 // Run everything
 //gulp.task('default', ['less', 'minify-css', 'minify-js', 'copy']);
-gulp.task('default', ['minify-css', 'minify-js', 'copy']);
+gulp.task('default', ['sass', 'minify-css', 'minify-js', 'copy']);
 
 // Configure the browserSync task
 gulp.task('browserSync', function() {
@@ -88,8 +99,9 @@ gulp.task('browserSync', function() {
 
 // Dev task with browserSync
 //gulp.task('dev', ['browserSync', 'less', 'minify-css', 'minify-js'], function() {
-gulp.task('dev', ['browserSync', 'minify-css', 'minify-js'], function() {
+gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'minify-js'], function() {
     //gulp.watch('less/*.less', ['less']);
+    gulp.watch('src/sass/*.sass', ['sass']);
     gulp.watch('src/css/*.css', ['minify-css']);
     gulp.watch('src/js/*.js', ['minify-js']);
     // Reloads the browser whenever HTML or JS files change
@@ -97,14 +109,4 @@ gulp.task('dev', ['browserSync', 'minify-css', 'minify-js'], function() {
     gulp.watch('src/js/**/*.js', browserSync.reload);
 });
 
-// Compiles SCSS files from /scss into /css
-// NOTE: This theme uses LESS by default. To swtich to SCSS you will need to update this gulpfile by changing the 'less' tasks to run 'sass'!
-gulp.task('sass', function() {
-    return gulp.src('src/scss/agency.scss')
-        .pipe(sass())
-        .pipe(header(banner, { pkg: pkg }))
-        .pipe(gulp.dest('css'))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
-});
+

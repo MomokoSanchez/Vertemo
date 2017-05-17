@@ -133,7 +133,6 @@ $(function () {
 		$(".headerBg").css("display", "block");		
 	})
 	.setTween(".headerBg", {y: "-20%", ease: Linear.easeNone})
-	.addIndicators()
 	.addTo(controller);
 
 
@@ -163,7 +162,6 @@ $(function () {
 		}	
 	})
 	.setTween(".portfolioBg", {y: "-20%", ease: Linear.easeNone})
-	.addIndicators()
 	.addTo(controller);
 
 });
