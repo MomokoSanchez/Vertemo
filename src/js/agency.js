@@ -30,4 +30,17 @@
         }
     })
 
+    // Animate Icons
+    $('#services .fa-list-ol').hover(function(){
+        $(this).toggleClass('animated bounceIn');
+    });
+
+    $('#services .fa-comments-o').hover(function(){
+        $(this).toggleClass('animated swing');
+    });
+
+    $('#services .fa-play').hover(function(){
+        $(this).toggleClass('animated zoomInLeft');
+    });
+
 })(jQuery); // End of use strict
