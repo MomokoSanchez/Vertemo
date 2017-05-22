@@ -220,7 +220,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0; }
 
 .headerBg {
-  background-image: url("../img/header-bg3.jpg");
+  background-image: url("../img/header-bg4.jpg");
   z-index: -1;
   height: 110vh; }
 
@@ -282,6 +282,8 @@ section {
   @media (min-width: 768px) {
     section {
       padding: 150px 0; } }
+  section .heading {
+    margin-bottom: 75px; }
   section h2.section-heading {
     font-size: 40px;
     margin-top: 0;
@@ -292,8 +294,7 @@ section {
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform: none;
     font-style: italic;
-    font-weight: 400;
-    margin-bottom: 75px; }
+    font-weight: 400; }
 
 .service-heading {
   margin: 40px 0 15px;
@@ -404,7 +405,10 @@ section {
       -moz-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
       -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%); } }
+      transform: translate(-50%, -50%); }
+      #services .container .text-muted {
+        text-align: left;
+        margin: 0; } }
 
 #services .circle {
   border-radius: 50%;
@@ -417,6 +421,9 @@ section {
   overflow: hidden; }
   #services .fa-stack i {
     color: #0d488d; }
+
+#services .text-muted {
+  margin-bottom: 30px; }
 
 .timeline {
   list-style: none;
@@ -473,6 +480,9 @@ section {
         margin-top: 12px;
         line-height: 14px;
         color: #122865; }
+        @media (max-width: 543px) {
+          .timeline > li .timeline-image h4 {
+            margin-top: 20px; } }
     .timeline > li.timeline-inverted > .timeline-panel {
       float: right;
       text-align: left;

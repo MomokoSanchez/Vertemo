@@ -31,16 +31,16 @@
     })
 
     // Animate Icons
-    $('#services .fa-shopping-cart').hover(function(){
-        $(this).toggleClass('animated zoomOutRight');
+    $('#services .fa-list-ol').hover(function(){
+        $(this).toggleClass('animated bounceIn');
     });
 
-    $('#services .fa-laptop').hover(function(){
-        $(this).toggleClass('animated rubberBand');
+    $('#services .fa-comments-o').hover(function(){
+        $(this).toggleClass('animated swing');
     });
 
-    $('#services .fa-lock').hover(function(){
-        $(this).toggleClass('animated shake');
+    $('#services .fa-play').hover(function(){
+        $(this).toggleClass('animated zoomInLeft');
     });
 
 })(jQuery); // End of use strict
