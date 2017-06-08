@@ -224,16 +224,19 @@ h1, h2, h3, h4, h5, h6 {
     top: 50%;
     left: 50%;
     @include transform( translate(-50%, -50%) );
+    width: 100%;
 
     .intro-lead-in {
       @include serif-font;
-      font-style: italic;
       font-size: 22px;
       line-height: 22px;
       margin-bottom: 25px;
       -webkit-text-fill-color: white;
-      -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: #cacaca;
+
+      @media (min-width: 768px) {
+        font-size: 30px;
+        line-height: 40px;
+      }
     }
 
     .intro-logo{
@@ -242,7 +245,6 @@ h1, h2, h3, h4, h5, h6 {
 
       @media (max-width: 767px) {
         width: 300px;
-        
       }
     }
 
@@ -252,19 +254,12 @@ h1, h2, h3, h4, h5, h6 {
       font-size: 50px;
       line-height: 50px;
       margin-bottom: 25px;
-    }
 
-    @media (min-width: 768px) {
-      .intro-lead-in {
-        font-size: 40px;
-        line-height: 40px;
-        margin-bottom: 25px;
-      }
-      .intro-heading {
+      @media (min-width: 768px) {
         font-size: 75px;
         line-height: 75px;
         margin-bottom: 50px;
-      }
+      }    
     }
   }
 }
@@ -292,7 +287,6 @@ section {
     font-size: 16px;
     @include serif-font;
     text-transform: none;
-    font-style: italic;
     font-weight: 400;
   }
 }
@@ -327,15 +321,37 @@ section {
     right: 0;
     border-radius: 2px;
 
+    .img-responsive, .img-responsive.top, .portfolio-details, .portfolio-caption, .portfolio-caption h4, .portfolio-caption p{
+      @include transition( all ease 0.5s,  transform 1s );
+    }
+
     .img-responsive.top{
       position: absolute;
       opacity: 1;
     }
 
-    .img-responsive, .img-responsive.top, .portfolio-caption, .portfolio-caption h4, .portfolio-caption p{
-      @include transition( all ease 0.5s,  transform 1s );
+    .portfolio-details{
+      position: absolute;
+      top: 0;
+      background: rgba(255,255,255,0.75);
+      padding: 20px;
+      margin: 20px;
+      opacity: 0;
+      width: calc(100% - 40px);
+      height: calc(100% - 40px);
+
+      p{
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        margin: 0;
+        padding: 20px;
+      }
     }
 
+    //hover over portfolio element
     &:hover{
       .img-responsive{
         @include transform( scale(1.1) );
@@ -347,11 +363,11 @@ section {
       .portfolio-caption {
         background-color: rgba(255,255,255,0.85);
         h4, p{
-          @include transform( scale(1.1) );
+          @include transform( scale(1.03) );
         }
       }
 
-      .portfolio-link .portfolio-hover{
+      .portfolio-link .portfolio-hover, .portfolio-details{
         opacity: 1;
       }
     }
@@ -565,7 +581,7 @@ section {
 
       .timeline-panel{
         width: 43%;
-        padding: 0 50px 20px 10px;
+        padding: 0 50px 20px 30px;
       }     
     }
 
@@ -657,7 +673,7 @@ section {
     min-height: 150px;
 
     .timeline-panel {
-      padding: 0 20px 20px;
+      padding: 0 40px 15px;
     }
     .timeline-image {
       width: 150px;
