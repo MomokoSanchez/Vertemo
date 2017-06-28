@@ -40,7 +40,7 @@
     });
 
     $('#services .fa-play').hover(function(){
-        $(this).toggleClass('animated zoomInLeft');
+        $(this).toggleClass('animated lightSpeedOut');
     });
 
 })(jQuery); // End of use strict
