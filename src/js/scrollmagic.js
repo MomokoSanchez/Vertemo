@@ -119,7 +119,7 @@ $(function () {
 	var scene0 = new ScrollMagic.Scene({
 		triggerElement: "#header",
 	})
-	.setTween("#header", 4, { backgroundColor: "rgba(0,0,0,0.1)" })
+	.setTween("#header", 6, { backgroundColor: "rgba(0,0,0,0.1)" })
 	.addTo(controller);
 
 	var sceneA = new ScrollMagic.Scene({
