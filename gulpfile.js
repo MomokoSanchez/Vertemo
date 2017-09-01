@@ -7,6 +7,7 @@ var cleanCSS = require('gulp-clean-css');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
 var pkg = require('./package.json');
+var concat = require('gulp-concat');
 
 // Set the banner content
 var banner = ['/*!\n',
@@ -58,7 +59,7 @@ gulp.task('minify-js', function() {
     return gulp.src('src/js/*')
         .pipe(uglify())
         .pipe(header(banner, { pkg: pkg }))
-        .pipe(rename({ suffix: '.min' }))
+        .pipe(concat('functions.min.js'))
         .pipe(gulp.dest('js'))
         .pipe(browserSync.reload({
             stream: true
