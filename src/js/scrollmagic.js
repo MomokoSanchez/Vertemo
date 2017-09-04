@@ -1,4 +1,5 @@
 
+//scrollmagic controller for desktop and mobile
 var controller = new ScrollMagic.Controller();
 
 $(function () { 
@@ -11,32 +12,86 @@ $(function () {
     
     function initScrollMagic(){
         
-        //scrollmagic functions
-
-        //////////////////
-		//	Vita    	//
-		//////////////////
+        //scrollmagic functions for desktop
 		desktopController = new ScrollMagic.Controller();
 
-		$('.timeline > li').each(function(){
-	    	var element = this;
+		//////////////
+		//	Header 	//
+		//////////////
+		var scene0 = new ScrollMagic.Scene({
+			triggerElement: "#header",
+		})
+		.setTween("#header", 6, { backgroundColor: "rgba(0,0,0,0.1)" })
+		.addTo(controller);
 
+		var sceneA = new ScrollMagic.Scene({
+			triggerElement: "#header",
+			offset: '-10%',
+			duration: '110%'
+		})
+		.on("enter", function (e) {
+			$(".portfolioBg").css("display", "none");
+			$(".contactBg").css("display", "none");
+			$(".headerBg").css("display", "block");		
+		})
+		.setTween(".headerBg", {y: "-20%", ease: Linear.easeNone})
+		.addTo(desktopController);
 
-			var scene21 = new ScrollMagic.Scene({
-				triggerElement: element,
-				duration: 200
-			})
-			.on("enter", function (e) {
-				$direction = e.target.controller().info("scrollDirection");
+		//////////////////
+		//	Portfolio 	//
+		//////////////////
 
-				$(element).addClass('increase');
-			})
-			.on("leave", function (e) {
-				$direction = e.target.controller().info("scrollDirection");
-				$(element).removeClass('increase');
-			})
-			.addTo(desktopController);
-		});
+		var scene1 = new ScrollMagic.Scene({
+			triggerElement: "#portfolio",
+			triggerHook: 'onEnter',
+			offset: '-10%',
+			duration: '200%'
+		})
+		.on("enter", function (e) {
+			$(".portfolioBg").css("display", "block");
+			$(".contactBg").css("display", "none");
+			$(".headerBg").css("display", "none");		
+		})
+		.on("leave", function (e) {
+
+			$direction = e.target.controller().info("scrollDirection");
+
+			if($direction == "REVERSE"){			
+				$(".portfolioBg").css("display", "none");
+				$(".contactBg").css("display", "none");
+				$(".headerBg").css("display", "block");	
+			}	
+		})
+		.setTween(".portfolioBg", {y: "-20%", ease: Linear.easeNone})
+		.addTo(desktopController);
+
+		//////////////////
+		//	Contact 	//
+		//////////////////
+
+		var contactScene = new ScrollMagic.Scene({
+			triggerElement: "#contact",
+			triggerHook: 'onEnter',
+			offset: '-10%',
+			duration: '110%'
+		})
+		.setTween(".contactBg", {y: "-20%", ease: Linear.easeNone})
+		.on("enter", function (e) {
+			$(".portfolioBg").css("display", "none");
+			$(".contactBg").css("display", "block");
+			$(".headerBg").css("display", "none");		
+		})
+		.on("leave", function (e) {
+
+			$direction = e.target.controller().info("scrollDirection");
+
+			if($direction == "REVERSE"){			
+				$(".portfolioBg").css("display", "block");
+				$(".contactBg").css("display", "none");
+				$(".headerBg").css("display", "none");	
+			}	
+		})
+		.addTo(desktopController);
     }
     
     //767 is my mobile breakpoint
@@ -89,7 +144,9 @@ $(function () {
 	});
 
 
-
+	//////////////////
+	//	Shadows 	//
+	//////////////////
 	$('.transparent').each(function(){
     	var transparent = this;
 
@@ -113,86 +170,32 @@ $(function () {
 	});
 
 
-	//////////////
-	//	Header 	//
-	//////////////
-	var scene0 = new ScrollMagic.Scene({
-		triggerElement: "#header",
-	})
-	.setTween("#header", 6, { backgroundColor: "rgba(0,0,0,0.1)" })
-	.addTo(controller);
+        //////////////////
+		//	Vita    	//
+		//////////////////
 
-	var sceneA = new ScrollMagic.Scene({
-		triggerElement: "#header",
-		offset: '-10%',
-		duration: '110%'
-	})
-	.on("enter", function (e) {
-		$(".portfolioBg").css("display", "none");
-		$(".contactBg").css("display", "none");
-		$(".headerBg").css("display", "block");		
-	})
-	.setTween(".headerBg", {y: "-20%", ease: Linear.easeNone})
-	.addTo(controller);
+		$('.timeline > li').each(function(){
+	    	var element = this;
 
 
-	//////////////////
-	//	Portfolio 	//
-	//////////////////
+			var scene21 = new ScrollMagic.Scene({
+				triggerElement: element,
+				duration: 200
+			})
+			.on("enter", function (e) {
+				$direction = e.target.controller().info("scrollDirection");
 
-	var scene1 = new ScrollMagic.Scene({
-		triggerElement: "#portfolio",
-		triggerHook: 'onEnter',
-		offset: '-10%',
-		duration: '200%'
-	})
-	.on("enter", function (e) {
-		$(".portfolioBg").css("display", "block");
-		$(".contactBg").css("display", "none");
-		$(".headerBg").css("display", "none");		
-	})
-	.on("leave", function (e) {
-
-		$direction = e.target.controller().info("scrollDirection");
-
-		if($direction == "REVERSE"){			
-			$(".portfolioBg").css("display", "none");
-			$(".contactBg").css("display", "none");
-			$(".headerBg").css("display", "block");	
-		}	
-	})
-	.setTween(".portfolioBg", {y: "-20%", ease: Linear.easeNone})
-	.addTo(controller);
-
+				$(element).addClass('increase');
+			})
+			.on("leave", function (e) {
+				$direction = e.target.controller().info("scrollDirection");
+				$(element).removeClass('increase');
+			})
+			.addTo(controller);
+		});
 });
 
-	//////////////////
-	//	Contact 	//
-	//////////////////
 
-	var contactScene = new ScrollMagic.Scene({
-		triggerElement: "#contact",
-		triggerHook: 'onEnter',
-		offset: '-10%',
-		duration: '110%'
-	})
-	.setTween(".contactBg", {y: "-20%", ease: Linear.easeNone})
-	.on("enter", function (e) {
-		$(".portfolioBg").css("display", "none");
-		$(".contactBg").css("display", "block");
-		$(".headerBg").css("display", "none");		
-	})
-	.on("leave", function (e) {
-
-		$direction = e.target.controller().info("scrollDirection");
-
-		if($direction == "REVERSE"){			
-			$(".portfolioBg").css("display", "block");
-			$(".contactBg").css("display", "none");
-			$(".headerBg").css("display", "none");	
-		}	
-	})
-	.addTo(controller);
 
 
 //because fuc*ing IE & Edge can't do background-attached: fixed;
