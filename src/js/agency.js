@@ -1,8 +1,45 @@
 // Agency Theme JavaScript
 
+
+//replacing portfolio images with mobile version. 
+function imgResize(){
+   if (window.matchMedia("(max-width: 991px)").matches) {
+    $("#licht-gray").attr('src',"img/portfolio/project1-gray-mobile.jpg");
+    $("#licht-color").attr('src',"img/portfolio/project1-mobile.jpg");
+    $("#ton-gray").attr('src',"img/portfolio/project2-gray-mobile.jpg");
+    $("#ton-color").attr('src',"img/portfolio/project2-mobile.jpg");
+    $("#video-gray").attr('src',"img/portfolio/project3-gray-mobile.jpg");
+    $("#video-color").attr('src',"img/portfolio/project3-mobile.jpg");
+    $("#buehne-gray").attr('src',"img/portfolio/project4-gray-mobile.jpg");
+    $("#buehne-color").attr('src',"img/portfolio/project4-mobile.jpg");
+  } else {
+    $("#licht-gray").attr('src',"img/portfolio/project1-gray.jpg");
+    $("#licht-color").attr('src',"img/portfolio/project1.jpg");
+    $("#ton-gray").attr('src',"img/portfolio/project2-gray.jpg");
+    $("#ton-color").attr('src',"img/portfolio/project2.jpg");
+    $("#video-gray").attr('src',"img/portfolio/project3-gray.jpg");
+    $("#video-color").attr('src',"img/portfolio/project3.jpg");
+    $("#buehne-gray").attr('src',"img/portfolio/project4-gray.jpg");
+    $("#buehne-color").attr('src',"img/portfolio/project4.jpg");
+  }     
+}
+
+$(window).resize( function(){
+    imgResize();
+});
+
+
 (function($) {
     "use strict"; // Start of use strict
 
+    // replace mobile img on load
+    imgResize();
+
+    //Hero image fadein on Load
+    $(document).ready(function(){
+      $('#header').removeClass('fade-out');
+    });
+    
     // jQuery for page scrolling feature - requires jQuery Easing plugin
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
@@ -46,26 +83,5 @@
     $('#contact .fa-envelope').hover(function(){
         $(this).toggleClass('animated zoomOutRight');
     });
-
-    //replacing portfolio images with mobile version. This is annoying. Is there no other solution?
-    if (window.matchMedia("(max-width: 767px)").matches) {
-      $("#licht-gray").attr('src',"img/portfolio/project1-gray-mobile.jpg");
-      $("#licht-color").attr('src',"img/portfolio/project1-mobile.jpg");
-      $("#ton-gray").attr('src',"img/portfolio/project2-gray-mobile.jpg");
-      $("#ton-color").attr('src',"img/portfolio/project2-mobile.jpg");
-      $("#video-gray").attr('src',"img/portfolio/project3-gray-mobile.jpg");
-      $("#video-color").attr('src',"img/portfolio/project3-mobile.jpg");
-      $("#buehne-gray").attr('src',"img/portfolio/project4-gray-mobile.jpg");
-      $("#buehne-color").attr('src',"img/portfolio/project4-mobile.jpg");
-    } else {
-      $("#licht-gray").attr('src',"img/portfolio/project1-gray.jpg");
-      $("#licht-color").attr('src',"img/portfolio/project1.jpg");
-      $("#ton-gray").attr('src',"img/portfolio/project2-gray.jpg");
-      $("#ton-color").attr('src',"img/portfolio/project2.jpg");
-      $("#video-gray").attr('src',"img/portfolio/project3-gray.jpg");
-      $("#video-color").attr('src',"img/portfolio/project3.jpg");
-      $("#buehne-gray").attr('src',"img/portfolio/project4-gray.jpg");
-      $("#buehne-color").attr('src',"img/portfolio/project4.jpg");
-    }
 
 })(jQuery); // End of use strict

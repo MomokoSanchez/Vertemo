@@ -213,12 +213,27 @@ h1, h2, h3, h4, h5, h6 {
   background-image: url('../img/header-bg.jpg');
   z-index: -1;
   height: 110vh;
+  /* iphone5 vh bug: replace with % */
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
+      height: 110%;
+  }
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+      height: 110%;
+  }
 }
+
 
 .contactBg{
   background-image: url('../img/map-image-blue.jpg');
   z-index: -3;
   height: 130vh;
+  /* iphone5 vh bug: replace with % */
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
+      height: 130%;
+  }
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+      height: 130%;
+  }
 }
 
 #header {
@@ -226,13 +241,20 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   height: 90vh;
   min-height: 570px;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0);
+  transition: 5.5s background;
 
-  //fallback for mobile non-parallax
-  @media(max-width: 767px){
-    background: transparent;
-    background-image: url('../img/header-bg-mobile.jpg'); 
-    @include full-width-background;
+  /* iphone5 vh bug: replace with % */
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
+      height: 90%;
+  }
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+      height: 90%;
+  }
+
+  &.fade-out {
+    background: rgba(0,0,0,0.9);
+    transition: none;
   }
 
   .intro-text {
@@ -362,12 +384,16 @@ section {
       width: calc(100% - 40px);
       height: calc(100% - 40px);
 
+      @media (max-width: 767px) and (orientation: landscape){
+        width: calc(100% - 60px);
+      }
+
       p{
         position: absolute;
         width: 100%;
         top: 50%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        @include transform( translate(-50%, -50%) );
         margin: 0;
         padding: 20px;
 
@@ -382,8 +408,8 @@ section {
       }
     }
 
-    //hover over portfolio element
-    &:hover{
+    //hover over portfolio element, default in mobile version
+    @mixin portfolioHover{
       .img-responsive{
         @include transform( scale(1.1) );
         &.top{
@@ -430,6 +456,14 @@ section {
         font-size: 16px;
         margin: 0;
       }
+    }
+
+    &:hover{
+      @include portfolioHover;
+    }
+
+    @media (max-width: 767px){
+      @include portfolioHover;
     }
 
   }

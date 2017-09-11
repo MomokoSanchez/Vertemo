@@ -228,29 +228,44 @@ h1, h2, h3, h4, h5, h6 {
 .headerBg {
   background-image: url("../img/header-bg.jpg");
   z-index: -1;
-  height: 110vh; }
+  height: 110vh;
+  /* iphone5 vh bug: replace with % */ }
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2) {
+    .headerBg {
+      height: 110%; } }
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2) {
+    .headerBg {
+      height: 110%; } }
 
 .contactBg {
   background-image: url("../img/map-image-blue.jpg");
   z-index: -3;
-  height: 130vh; }
+  height: 130vh;
+  /* iphone5 vh bug: replace with % */ }
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2) {
+    .contactBg {
+      height: 130%; } }
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2) {
+    .contactBg {
+      height: 130%; } }
 
 #header {
   text-align: center;
   color: white;
   height: 90vh;
   min-height: 570px;
-  background: rgba(0, 0, 0, 0.9); }
-  @media (max-width: 767px) {
+  background: transparent;
+  transition: 5.5s background;
+  /* iphone5 vh bug: replace with % */ }
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2) {
     #header {
-      background: transparent;
-      background-image: url("../img/header-bg-mobile.jpg");
-      background-position: center center;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      background-repeat: no-repeat; } }
+      height: 90%; } }
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2) {
+    #header {
+      height: 90%; } }
+  #header.fade-out {
+    background: rgba(0, 0, 0, 0.9);
+    transition: none; }
   #header .intro-text {
     position: absolute;
     top: 50%;
@@ -366,11 +381,18 @@ section {
       opacity: 0;
       width: calc(100% - 40px);
       height: calc(100% - 40px); }
+      @media (max-width: 767px) and (orientation: landscape) {
+        #portfolio .portfolio-item .portfolio-details {
+          width: calc(100% - 60px); } }
       #portfolio .portfolio-item .portfolio-details p {
         position: absolute;
         width: 100%;
         top: 50%;
         left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         margin: 0;
         padding: 20px; }
@@ -380,24 +402,6 @@ section {
         @media (max-width: 320px) {
           #portfolio .portfolio-item .portfolio-details p {
             font-size: 11.5px; } }
-    #portfolio .portfolio-item:hover .img-responsive {
-      -webkit-transform: scale(1.1);
-      -moz-transform: scale(1.1);
-      -ms-transform: scale(1.1);
-      -o-transform: scale(1.1);
-      transform: scale(1.1); }
-      #portfolio .portfolio-item:hover .img-responsive.top {
-        opacity: 0; }
-    #portfolio .portfolio-item:hover .portfolio-caption {
-      background-color: rgba(255, 255, 255, 0.85); }
-      #portfolio .portfolio-item:hover .portfolio-caption h4, #portfolio .portfolio-item:hover .portfolio-caption p {
-        -webkit-transform: scale(1.03);
-        -moz-transform: scale(1.03);
-        -ms-transform: scale(1.03);
-        -o-transform: scale(1.03);
-        transform: scale(1.03); }
-    #portfolio .portfolio-item:hover .portfolio-link .portfolio-hover, #portfolio .portfolio-item:hover .portfolio-details {
-      opacity: 1; }
     #portfolio .portfolio-item .portfolio-link {
       display: block;
       position: relative;
@@ -419,6 +423,43 @@ section {
         font-style: italic;
         font-size: 16px;
         margin: 0; }
+    #portfolio .portfolio-item:hover .img-responsive {
+      -webkit-transform: scale(1.1);
+      -moz-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      -o-transform: scale(1.1);
+      transform: scale(1.1); }
+      #portfolio .portfolio-item:hover .img-responsive.top {
+        opacity: 0; }
+    #portfolio .portfolio-item:hover .portfolio-caption {
+      background-color: rgba(255, 255, 255, 0.85); }
+      #portfolio .portfolio-item:hover .portfolio-caption h4, #portfolio .portfolio-item:hover .portfolio-caption p {
+        -webkit-transform: scale(1.03);
+        -moz-transform: scale(1.03);
+        -ms-transform: scale(1.03);
+        -o-transform: scale(1.03);
+        transform: scale(1.03); }
+    #portfolio .portfolio-item:hover .portfolio-link .portfolio-hover, #portfolio .portfolio-item:hover .portfolio-details {
+      opacity: 1; }
+    @media (max-width: 767px) {
+      #portfolio .portfolio-item .img-responsive {
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1);
+        transform: scale(1.1); }
+        #portfolio .portfolio-item .img-responsive.top {
+          opacity: 0; }
+      #portfolio .portfolio-item .portfolio-caption {
+        background-color: rgba(255, 255, 255, 0.85); }
+        #portfolio .portfolio-item .portfolio-caption h4, #portfolio .portfolio-item .portfolio-caption p {
+          -webkit-transform: scale(1.03);
+          -moz-transform: scale(1.03);
+          -ms-transform: scale(1.03);
+          -o-transform: scale(1.03);
+          transform: scale(1.03); }
+      #portfolio .portfolio-item .portfolio-link .portfolio-hover, #portfolio .portfolio-item .portfolio-details {
+        opacity: 1; } }
 
 #portfolio * {
   z-index: 2; }
