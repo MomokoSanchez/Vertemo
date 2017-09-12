@@ -1,2 +1,5 @@
+#Exclude Staging and archive folder 
+
 User-agent: *
 Disallow: /vertemostaging
+Disallow: /Archiv
