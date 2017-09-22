@@ -193,7 +193,7 @@ $(function () {
 
 
 
-//because fuc*ing IE & Edge can't do background-attached: fixed;
+//because fuc*ing IE & Edge can't do background-attachment: fixed;
 
 if(navigator.userAgent.match(/Trident\/7\./)) { // if IE
         $('body').on("mousewheel", function () {
